@@ -27,54 +27,70 @@ export function HomePage() {
   return (
     <Layout>
       <section class="hero">
-        <p class="eyebrow">FOR JAPANESE CREATORS</p>
-        <h1>感想も、お題も、質問も。送りやすいひとつの箱へ。</h1>
-        <p class="lead">
-          匿名の一言や絵文字から、長文の感想まで。送る人が迷わず、創作者が安心して受け取れる小さな受信箱です。
-        </p>
-        <div class="actions">
-          <a class="button primary" href="/signup">
-            パイロットに参加
-          </a>
-          <a class="button secondary" href="#experiment">
-            検証条件を見る
-          </a>
+        <div class="hero-copy">
+          <p class="eyebrow">CREATOR INBOX</p>
+          <h1>匿名の声を、ひとつの受信箱へ。</h1>
+          <p class="lead">
+            絵文字、感想、お題、質問。送り手は名前を出さず、あなたは落ち着いて受け取れます。
+          </p>
+          <div class="actions">
+            <a class="button primary" href="/signup">
+              受信箱を作る
+            </a>
+            <a class="button secondary" href="/login">
+              ログイン
+            </a>
+          </div>
+        </div>
+        <div class="inbox-preview" aria-label="匿名メッセージが届く受信箱のイメージ">
+          <div class="profile-chip" aria-hidden="true">
+            <span class="profile-avatar">m</span>
+            <span>
+              <strong>mioの受信箱</strong>
+              <small>匿名で送れます</small>
+            </span>
+          </div>
+          <div class="preview-inbox">
+            <div class="preview-title">
+              <span>受信箱</span>
+              <span class="unread-count">3</span>
+            </div>
+            <article class="preview-message">
+              <span class="message-kind feedback">感想</span>
+              <p>新作の色づかいが好きです。次も楽しみにしています。</p>
+            </article>
+            <article class="preview-message">
+              <span class="message-kind prompt">お題</span>
+              <p>雨の日の街を見てみたいです ☂</p>
+            </article>
+            <article class="preview-message emoji">
+              <span class="message-kind">絵文字</span>
+              <p>👏　💐　✨</p>
+            </article>
+          </div>
+          <div class="send-chip" aria-hidden="true">
+            <span>匿名で送信</span>
+            <strong>→</strong>
+          </div>
         </div>
       </section>
-      <section class="feature-grid" aria-label="特徴">
-        <article>
-          <span aria-hidden="true">01</span>
-          <h2>種類を先に選ぶ</h2>
-          <p>「お題箱だから感想は違うかも」という迷いを、感想・お題・質問の入口でなくします。</p>
-        </article>
-        <article>
-          <span aria-hidden="true">02</span>
-          <h2>絵文字だけでも届く</h2>
-          <p>文章を考える余裕がない人も、ワンタップで応援を送れます。</p>
-        </article>
-        <article>
-          <span aria-hidden="true">03</span>
-          <h2>送信者を追跡しない</h2>
-          <p>本文と種類だけを保存。アプリのデータベースに送信者のIPや識別子を残しません。</p>
-        </article>
-      </section>
-      <section class="panel" id="experiment">
-        <p class="eyebrow">PUBLIC EXPERIMENT</p>
-        <h2>成功条件を先に公開します。</h2>
-        <dl class="metrics">
-          <div>
-            <dt>対象</dt>
-            <dd>既存の匿名箱を使う日本語創作者20人</dd>
-          </div>
-          <div>
-            <dt>期間</dt>
-            <dd>既存URLと2週間併用、{product.experiment.deadline}で判断</dd>
-          </div>
-          <div>
-            <dt>成功条件</dt>
-            <dd>{product.experiment.success}</dd>
-          </div>
-        </dl>
+      <section class="message-types" aria-label="送れるメッセージ">
+        <div>
+          <span aria-hidden="true">👏</span>
+          <strong>絵文字</strong>
+        </div>
+        <div>
+          <span aria-hidden="true">💬</span>
+          <strong>感想</strong>
+        </div>
+        <div>
+          <span aria-hidden="true">✦</span>
+          <strong>お題</strong>
+        </div>
+        <div>
+          <span aria-hidden="true">?</span>
+          <strong>質問</strong>
+        </div>
       </section>
     </Layout>
   );
@@ -188,18 +204,25 @@ export function PublicInboxPage({
 type AuthPageProps = {
   mode: "login" | "signup";
   registered?: boolean;
+  turnstileSiteKey?: string | undefined;
 };
 
-export function AuthPage({ mode, registered = false }: AuthPageProps) {
+export function AuthPage({ mode, registered = false, turnstileSiteKey }: AuthPageProps) {
   const signup = mode === "signup";
+  const scripts = [
+    "/app.js",
+    ...(signup && turnstileSiteKey
+      ? ["https://challenges.cloudflare.com/turnstile/v0/api.js"]
+      : []),
+  ];
   return (
-    <Layout scripts={["/app.js"]} title={`${signup ? "参加登録" : "ログイン"} | ${product.name}`}>
+    <Layout scripts={scripts} title={`${signup ? "アカウント作成" : "ログイン"} | ${product.name}`}>
       <section class="auth-card">
-        <p class="eyebrow">{signup ? "PILOT ACCESS" : "WELCOME BACK"}</p>
+        <p class="eyebrow">{signup ? "GET STARTED" : "WELCOME BACK"}</p>
         <h1>{signup ? "自分の受信箱をつくる" : "受信箱をひらく"}</h1>
         <p>
           {signup
-            ? "現在は20人の招待制パイロットです。"
+            ? "匿名の感想やお題を受け取る、自分専用のURLを作ります。"
             : "登録したメールアドレスでログインします。"}
         </p>
         {registered && <Notice tone="success">登録できました。続けてログインしてください。</Notice>}
@@ -227,9 +250,13 @@ export function AuthPage({ mode, registered = false }: AuthPageProps) {
           </label>
           {signup && (
             <label>
-              招待コード
-              <input autocomplete="off" name="inviteCode" required type="text" />
+              招待コード（任意）
+              <input autocomplete="off" name="inviteCode" type="text" />
+              <small>個別に案内された方だけ入力してください。</small>
             </label>
+          )}
+          {signup && turnstileSiteKey && (
+            <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
           )}
           <p aria-live="polite" class="notice hidden" data-auth-status role="status"></p>
           <button class="button primary" type="submit">
@@ -240,7 +267,7 @@ export function AuthPage({ mode, registered = false }: AuthPageProps) {
           {signup ? (
             <a href="/login">すでに登録済みの方</a>
           ) : (
-            <a href="/signup">招待コードをお持ちの方</a>
+            <a href="/signup">アカウントを作成</a>
           )}
         </p>
       </section>
@@ -418,9 +445,9 @@ export function PrivacyPage() {
         <p>
           濫用防止のためCloudflareによる短時間のレート制限とTurnstileを使います。受信者は投稿をアーカイブでき、ログイン後の設定からアカウントと関連データを即時削除できます。
         </p>
-        <h2>検証データ</h2>
+        <h2>統計情報</h2>
         <p>
-          検証結果は人数や比率に集計して公開し、メールアドレスや投稿本文など、個人を推測できる情報は公開しません。
+          利用状況を公開する場合は人数や比率に集計し、メールアドレスや投稿本文など、個人を推測できる情報は公開しません。
         </p>
       </article>
     </Layout>

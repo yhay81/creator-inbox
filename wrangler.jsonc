@@ -4,6 +4,8 @@
   "main": "src/worker.tsx",
   "compatibility_date": "2026-07-26",
   "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
   "observability": {
     "enabled": true,
   },
@@ -24,6 +26,14 @@
     },
   ],
   "ratelimits": [
+    {
+      "name": "SIGNUP_RATE_LIMITER",
+      "namespace_id": "1002",
+      "simple": {
+        "limit": 3,
+        "period": 60,
+      },
+    },
     {
       "name": "RATE_LIMITER",
       "namespace_id": "1001",

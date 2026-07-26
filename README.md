@@ -1,6 +1,6 @@
 # Creator Inbox
 
-日本語の創作者が、絵文字・感想・お題・質問をひとつのURLで匿名受信するための招待制パイロットです。既存のお題箱系サービスとの2週間併用で、反応数と移行意向が改善するかを公開検証します。
+日本語の創作者が、絵文字・感想・お題・質問をひとつのURLで匿名受信するための先着20名の公開パイロットです。既存のお題箱系サービスとの2週間併用で、反応数と移行意向が改善するかを公開検証します。
 
 ## Product
 
@@ -24,7 +24,7 @@ npx wrangler d1 migrations apply creator-inbox --local
 npm run dev
 ```
 
-`.dev.vars`のダミー値はローカル専用です。認証を試す前に、32文字以上の`BETTER_AUTH_SECRET`とパイロット用`PILOT_INVITE_CODE`へ変更してください。
+`.dev.vars`のダミー値はローカル専用です。認証を試す前に、32文字以上の`BETTER_AUTH_SECRET`と予備の`PILOT_INVITE_CODE`へ変更してください。
 
 ## Quality gate
 
