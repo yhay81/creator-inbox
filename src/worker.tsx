@@ -65,9 +65,18 @@ app.get("/privacy", (c) => c.html(<PrivacyPage />));
 app.get("/login", (c) =>
   c.html(<AuthPage mode="login" registered={c.req.query("registered") === "1"} />),
 );
-app.get("/signup", (c) => c.html(<AuthPage mode="signup" />));
+app.get("/signup", (c) =>
+  c.html(<AuthPage mode="signup" turnstileSiteKey={c.env.PUBLIC_TURNSTILE_SITE_KEY} />),
+);
 
-app.on(["GET", "POST"], "/api/auth/*", (c) => {
+app.on(["GET", "POST"], "/api/auth/*", async (c) => {
+  if (c.req.method === "POST" && new URL(c.req.url).pathname.endsWith("/sign-up/email")) {
+    const clientKey = `${c.req.header("cf-connecting-ip") ?? "unknown"}:signup`;
+    const rate = await c.env.SIGNUP_RATE_LIMITER.limit({ key: clientKey });
+    if (!rate.success) {
+      return c.json({ message: "登録試行が多すぎます。1分ほど待ってください。" }, 429);
+    }
+  }
   const auth = createAuth(c.env, new URL(c.req.url).origin);
   return auth.handler(c.req.raw);
 });

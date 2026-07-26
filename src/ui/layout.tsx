@@ -36,8 +36,10 @@ export function Layout({
             {product.name}
           </a>
           <nav aria-label="メイン">
-            <a href="/dashboard">受信箱</a>
-            <span class="stage">{product.experiment.stage}</span>
+            <a href="/login">ログイン</a>
+            <a class="nav-cta" href="/signup">
+              受信箱を作る
+            </a>
           </nav>
         </header>
         <main id="main">{children}</main>

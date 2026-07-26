@@ -10,5 +10,6 @@ export type Bindings = {
   PILOT_INVITE_CODE: string;
   PUBLIC_TURNSTILE_SITE_KEY?: string;
   RATE_LIMITER: RateLimiter;
+  SIGNUP_RATE_LIMITER: RateLimiter;
   TURNSTILE_SECRET_KEY?: string;
 };
