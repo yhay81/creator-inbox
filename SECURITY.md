@@ -2,7 +2,7 @@
 
 ## Reporting
 
-脆弱性や匿名投稿の濫用を公開Issueへ投稿しないでください。脆弱性はGitHubのprivate vulnerability reporting、パイロット中の濫用は参加時に案内した非公開連絡先へ報告してください。24時間以内に一次確認します。
+脆弱性や匿名投稿の濫用を公開Issueへ投稿しないでください。脆弱性は[GitHubのprivate vulnerability reporting](https://github.com/yhay81/creator-inbox/security/advisories/new)、パイロット中の濫用は参加時に案内した非公開連絡先へ報告してください。24時間以内に一次確認します。
 
 ## Implemented baseline
 

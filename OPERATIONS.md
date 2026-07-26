@@ -7,7 +7,7 @@
 3. [x] Better Auth secretとパイロット招待コードをCloudflare Secretsへ登録する。
 4. [x] D1 migrationをremoteへ適用する。
 5. [x] `yhay81`の個人運営とセルフサービス削除を明記する。
-6. [ ] GitHubのprivate vulnerability reportingを有効化し、`SECURITY.md`から案内する。
+6. [x] GitHubのprivate vulnerability reportingを有効化し、`SECURITY.md`から案内する。
 7. [ ] 独自ドメインへ移る場合はTurnstileの許可ドメインとBetter Auth originを同時に更新する。
 8. [x] `npm run deploy`後、下記のsmoke testを行う。
 
