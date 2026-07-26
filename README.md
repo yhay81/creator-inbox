@@ -1,6 +1,10 @@
 # Creator Inbox
 
-日本語の創作者が、絵文字・感想・お題・質問をひとつのURLで匿名受信するための先着20名の公開パイロットです。既存のお題箱系サービスとの2週間併用で、反応数と移行意向が改善するかを公開検証します。
+日本語の創作者が、絵文字・感想・お題・質問をひとつのURLで匿名受信するための受信箱です。送信者の登録は必要ありません。
+
+[使う](https://creator-inbox.yusuke8h.workers.dev) · [実利用募集](https://github.com/yhay81/creator-inbox/issues/1)
+
+![匿名の絵文字・感想・質問がひとつの受信箱へ届くCreator Inboxのイメージ](./public/og.jpg)
 
 ## Product
 
@@ -32,6 +36,7 @@ npm run dev
 npm run check
 npm test
 npm run build
+npm run metrics
 ```
 
 `npm run deploy`も同じ検査を先に実行します。
