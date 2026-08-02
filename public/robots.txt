@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://creator-inbox.yusuke8h.workers.dev/sitemap.xml
+Sitemap: https://creator-inbox.yhay81.com/sitemap.xml

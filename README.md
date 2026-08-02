@@ -2,7 +2,7 @@
 
 日本語の創作者が、絵文字・感想・お題・質問をひとつのURLで匿名受信するための受信箱です。送信者の登録は必要ありません。
 
-[使う](https://creator-inbox.yusuke8h.workers.dev) · [実利用募集](https://github.com/yhay81/creator-inbox/issues/1)
+[使う](https://creator-inbox.yhay81.com) · [実利用募集](https://github.com/yhay81/creator-inbox/issues/1)
 
 ![匿名の絵文字・感想・質問がひとつの受信箱へ届くCreator Inboxのイメージ](./public/og.jpg)
 
