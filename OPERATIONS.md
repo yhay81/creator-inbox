@@ -3,19 +3,18 @@
 ## One-time production setup
 
 1. [x] Cloudflare APAC上でD1 `creator-inbox`を作り、実IDを設定する。
-2. [x] Workers.devドメイン専用Turnstile widgetとRate Limitingを設定する。
-3. [x] Better Auth secretとパイロット招待コードをCloudflare Secretsへ登録する。
+2. [x] `creator-inbox.yhay81.com`を許可したTurnstile widgetとRate Limitingを設定する。
+3. [x] Better Auth secretをCloudflare Secretsへ登録する。
 4. [x] D1 migrationをremoteへ適用する。
 5. [x] `yhay81`の個人運営とセルフサービス削除を明記する。
 6. [x] GitHubのprivate vulnerability reportingを有効化し、`SECURITY.md`から案内する。
-7. [ ] 独自ドメインへ移る場合はTurnstileの許可ドメインとBetter Auth originを同時に更新する。
+7. [x] Turnstileの許可ドメインとBetter Auth originを独自ドメインへ更新する。
 8. [x] `npm run deploy`後、下記のsmoke testを行う。
 
 ## Smoke test
 
 - `/healthz`が200と`healthy: true`を返す。
-- Turnstile未完了の公開登録が拒否され、正しい招待コードは予備導線として利用できる。
-- 20名到達後はhookとD1 triggerの両方が新規登録を拒否する。
+- Turnstile未完了の公開登録が拒否される。
 - 12文字未満のパスワードが拒否される。
 - ログイン後に受信箱を作成し、公開URLを別ブラウザで開ける。
 - 絵文字、感想、お題、質問を各1件送り、受信箱で表示・アーカイブできる。

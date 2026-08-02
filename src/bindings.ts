@@ -7,7 +7,6 @@ export type Bindings = {
   BETTER_AUTH_SECRET: string;
   DB: D1Database;
   ENVIRONMENT: "development" | "preview" | "production";
-  PILOT_INVITE_CODE: string;
   PUBLIC_TURNSTILE_SITE_KEY?: string;
   RATE_LIMITER: RateLimiter;
   SIGNUP_RATE_LIMITER: RateLimiter;

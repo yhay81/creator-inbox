@@ -28,7 +28,7 @@ npx wrangler d1 migrations apply creator-inbox --local
 npm run dev
 ```
 
-`.dev.vars`のダミー値はローカル専用です。認証を試す前に、32文字以上の`BETTER_AUTH_SECRET`と予備の`PILOT_INVITE_CODE`へ変更してください。
+`.dev.vars`のダミー値はローカル専用です。認証を試す前に、32文字以上の`BETTER_AUTH_SECRET`へ変更してください。
 
 ## Quality gate
 
@@ -54,7 +54,6 @@ npx wrangler d1 migrations apply creator-inbox --remote
 
 ```powershell
 npx wrangler secret put BETTER_AUTH_SECRET
-npx wrangler secret put PILOT_INVITE_CODE
 npx wrangler secret put TURNSTILE_SECRET_KEY
 ```
 
