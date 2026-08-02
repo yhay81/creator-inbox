@@ -25,7 +25,7 @@ function Notice({ children, tone = "error" }: NoticeProps) {
 
 export function HomePage() {
   return (
-    <Layout>
+    <Layout title="匿名の感想・質問を受け取る | Creator Inbox">
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow">CREATOR INBOX</p>

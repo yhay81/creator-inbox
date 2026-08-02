@@ -22,6 +22,7 @@ describe("worker", () => {
     expect(html).toContain('lang="ja"');
     expect(html).toContain('itemscope=""');
     expect(html).toContain('itemtype="https://schema.org/WebApplication"');
+    expect(html).toContain("<title>匿名の感想・質問を受け取る | Creator Inbox</title>");
     expect(html).toContain("匿名の声を、ひとつの受信箱へ。");
     expect(html).toContain("新作の色づかいが好きです。");
     expect(html).toContain('content="summary_large_image" name="twitter:card"');
